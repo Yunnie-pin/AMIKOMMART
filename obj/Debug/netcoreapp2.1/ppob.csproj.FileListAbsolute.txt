@@ -1,0 +1,22 @@
+/home/adefebrian/Documents/fp pemro/ppob/bin/Debug/netcoreapp2.1/ppob.deps.json
+/home/adefebrian/Documents/fp pemro/ppob/bin/Debug/netcoreapp2.1/ppob.runtimeconfig.json
+/home/adefebrian/Documents/fp pemro/ppob/bin/Debug/netcoreapp2.1/ppob.runtimeconfig.dev.json
+/home/adefebrian/Documents/fp pemro/ppob/bin/Debug/netcoreapp2.1/ppob.dll
+/home/adefebrian/Documents/fp pemro/ppob/bin/Debug/netcoreapp2.1/ppob.pdb
+/home/adefebrian/Documents/fp pemro/ppob/obj/Debug/netcoreapp2.1/ppob.csprojAssemblyReference.cache
+/home/adefebrian/Documents/fp pemro/ppob/obj/Debug/netcoreapp2.1/ppob.csproj.CoreCompileInputs.cache
+/home/adefebrian/Documents/fp pemro/ppob/obj/Debug/netcoreapp2.1/ppob.AssemblyInfoInputs.cache
+/home/adefebrian/Documents/fp pemro/ppob/obj/Debug/netcoreapp2.1/ppob.AssemblyInfo.cs
+/home/adefebrian/Documents/fp pemro/ppob/obj/Debug/netcoreapp2.1/ppob.dll
+/home/adefebrian/Documents/fp pemro/ppob/obj/Debug/netcoreapp2.1/ppob.pdb
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/obj/Debug/netcoreapp2.1/ppob.csprojAssemblyReference.cache
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/obj/Debug/netcoreapp2.1/ppob.csproj.CoreCompileInputs.cache
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/obj/Debug/netcoreapp2.1/ppob.AssemblyInfoInputs.cache
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/obj/Debug/netcoreapp2.1/ppob.AssemblyInfo.cs
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/obj/Debug/netcoreapp2.1/ppob.dll
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/obj/Debug/netcoreapp2.1/ppob.pdb
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/bin/Debug/netcoreapp2.1/ppob.deps.json
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/bin/Debug/netcoreapp2.1/ppob.runtimeconfig.json
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/bin/Debug/netcoreapp2.1/ppob.runtimeconfig.dev.json
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/bin/Debug/netcoreapp2.1/ppob.dll
+/home/arifinyunianta/Public/Kuliah/Pemrograman2/UAS/bin/Debug/netcoreapp2.1/ppob.pdb
