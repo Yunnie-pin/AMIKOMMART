@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace ppob
 {
@@ -21,6 +22,7 @@ namespace ppob
        }
 
        public void buydata(){
+           Console.Clear();
            setDefault();
            Console.WriteLine("----MENU PAKET DATA----\n");
            Console.WriteLine("Pilih paket data : ");
@@ -71,6 +73,7 @@ namespace ppob
                kembalian = cash - price;
 
                // menampilkan pesan transaksi berhasil
+               ngirimDataProcess();
                Console.WriteLine("Selamat Transaksi Anda telah berhasil");
                Console.WriteLine($"Paket data sebesar {paket}GB telah BERHASIL diaktifkan");
                
@@ -96,6 +99,16 @@ namespace ppob
            Console.Write("Masukkan uang Anda : ");
            cash = Convert.ToDouble(Console.ReadLine());
        }
+
+        private void ngirimDataProcess(){
+            Console.WriteLine("Sedang Mengirim Data sebesar " + paket + "Gb ke " + noTlp);
+                for (int counter = 10; counter >= 0; counter--)
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Tunggu ..." + counter +" detik.");
+                }
+            Console.WriteLine("Transaksi berhasil!");
+        }
 
         private void CetakStruk(){
                     PrintNota tukangprint = PrintNota.Instance;

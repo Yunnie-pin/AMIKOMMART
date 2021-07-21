@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
+
 
 namespace ppob
 {
@@ -129,7 +131,7 @@ namespace ppob
         // method untuk menampilkan pesan transaksi berhasil
         private void TransaksiBerhasil()
         {
-            Console.WriteLine("Transaksi berhasil");
+            ngirimPulsaProcess();
             Console.WriteLine($"Pulsa telah ditambahkan sebesar Rp{pulsa} ke nomor {noTelp}");
             Console.WriteLine("=========================================================\n");
             Console.Write("ketik ok untuk mencetak nota\n : ");
@@ -152,8 +154,19 @@ namespace ppob
             }
         }
         
-        private void CetakStruk()
-        {
+
+
+        private void ngirimPulsaProcess(){
+            Console.WriteLine("Sedang Mengirim ke " + noTelp);
+                for (int counter = 10; counter >= 0; counter--)
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Tunggu ..." + counter +" detik.");
+                }
+            Console.WriteLine("Transaksi berhasil!");
+        }
+
+        private void CetakStruk(){
                     PrintNota tukangprint = PrintNota.Instance;
                     var text2 = new List<string>();
                     text2.Add("\n       STRUK  PEMBELIAN       ");
