@@ -2,12 +2,13 @@
        STRUK  PEMBELIAN       
      : PEMBAYARAN PULSA :     
 ==============================
-NO HANDPHONE   : 081915223777
-NOMINAL        : Rp45000
-Data Sebesar 5Gb
+NO HANDPHONE   : 08329392832
+NOMINAL        : Rp10000
+BIAYA ADMIN    : 2000
+TOTAL          : 12000
 
        - DETAIL BAYAR -       
 
-TUNAI          : 50000
-KEMBALIAN      : 5000
+TUNAI          : 819123456
+KEMBALIAN      : 819111456
 ==============================

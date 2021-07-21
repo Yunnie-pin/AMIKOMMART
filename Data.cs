@@ -12,15 +12,28 @@ namespace ppob
         private string noTlp;
         private double cash;
 
+       public Data(int paket,int price,int kembalian,string noTlp,double cash){
+            this.paket = paket;
+            this.price = price;
+            this.kembalian = kembalian;
+            this.noTlp = noTlp;
+            this.cash = cash;
+       }
+
        public void buydata(){
+           setDefault();
            Console.WriteLine("----MENU PAKET DATA----\n");
            Console.WriteLine("Pilih paket data : ");
            Console.WriteLine("1. Paket data 5Gb, Rp 45.000");
            Console.WriteLine("2. Paket data 8Gb, Rp 72.000");
            Console.WriteLine("3. Paket data 10Gb, Rp 98.000");
            Console.WriteLine("4. Paket data 12Gb, Rp 112.000");
+
+           do{
            Console.Write("Masukkan pilihan [1-3] : ");
            pilihan = Convert.ToInt32(Console.ReadLine());
+           }while(pilihan >3 || pilihan < 1);
+
 
            switch (pilihan){
                case 1:
@@ -66,6 +79,8 @@ namespace ppob
            } else {
                // menampilkan pesan transaksi gagal karena uang yg diinputkan user tidak mencukupi
                Console.WriteLine("Maaf, transaksi telah gagal karena uang Anda tidak mencukupi");
+               Console.WriteLine("Anda akan dialihkan pada halaman utama");
+               Console.ReadKey();
            }
        }
 
@@ -82,51 +97,7 @@ namespace ppob
            cash = Convert.ToDouble(Console.ReadLine());
        }
 
-       // method untuk mencetak struk ke file txt
-    //    public void CetakStruk()
-    //    {
-    //        try
-    //        {
-    //            StreamWriter cetak = new StreamWriter("C:\\StrukPembayaran.txt");
-    //            /////////////////123456789012345678901234567890
-    //            cetak.WriteLine("         STRUK  PEMBELIAN          ");
-    //            cetak.WriteLine("     : PEMBAYARAN PAKET DATA :     ");
-    //            cetak.WriteLine("===================================");
-    //            cetak.WriteLine("NO HANDPHONE   : ", noTlp);
-    //            cetak.Write("DATA Sebesar       : ");
-    //            switch (pilihan)
-    //            {
-    //                case 1:
-    //                    cetak.WriteLine(paket);
-    //                    break;
-    //                case 2:
-    //                    cetak.WriteLine(paket);
-    //                    break;
-    //                case 3:
-    //                    cetak.WriteLine(paket);
-    //                    break;
-    //                case 4:
-    //                    cetak.WriteLine(paket);
-    //                    break;
-    //            }
-//
-    //            cetak.WriteLine("       - DETAIL PEMBAYAR -       ");
-    //            cetak.WriteLine();
-    //            cetak.WriteLine("BAYAR          : ", cash);
-    //            cetak.WriteLine("KEMBALIAN      : ", kembalian);
-    //            cetak.WriteLine("=================================");
-    //        }
-    //        catch (Exception error)
-    //        {
-    //            Console.WriteLine(error.Message);
-    //        }
-    //        finally
-    //        {
-    //            Console.WriteLine("Transaksi Berhasil!");
-    //        }
-    //    }
-
-    private void CetakStruk(){
+        private void CetakStruk(){
                     PrintNota tukangprint = PrintNota.Instance;
                     var text3 = new List<string>();
                     text3.Add("\n       STRUK  PEMBELIAN       ");
@@ -145,7 +116,15 @@ namespace ppob
 
                     Console.WriteLine("Data berhasil dicetak!!! Tekan ENTER untuk langsung kembali ke menu utama");
                     Console.ReadKey();
-    }
+        }
+
+        private void setDefault(){
+            this.paket = 0;
+            this.price = 0;
+            this.kembalian = 0;
+            this.noTlp = "";
+            this.cash = 0;
+        }
 
     }
 }

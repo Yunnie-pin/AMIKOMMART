@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace ppob
 {
@@ -11,16 +13,25 @@ namespace ppob
         private double totalHarga;
         private double kembalian;
 
+        public Listrik(int harga, int jumlahBeli, int uang, int totalHarga, int kembalian){
+            this.harga = harga;
+            this.jumlahBeli = jumlahBeli;
+            this.uang = uang;
+            this.totalHarga = totalHarga;
+            this.kembalian = kembalian;
+        }
+
         public void beliPulsaListrik()
         {
             Console.Clear();
+            setDefault();
+
             Console.WriteLine("<------MENU PEMBELIAN TOKEN PULSA LISTRIK------>\n");
             Console.WriteLine("Pilih paket pulsa listrik: ");
             Console.WriteLine("1. Paket pulsa listrik 100.000 (Rp 103.000)");
             Console.WriteLine("2. Paket pulsa listrik 50.000 (Rp 53.000)");
             Console.WriteLine("3. Paket pulsa listrik 20.000 (Rp 23.000)");
             int pilihan1;
-
             //Logika menentukan harga barang berdasar pilihan
             do { 
             Console.Write("\nMasukkan pilihan Anda [1-3]\t\t\t: ");
@@ -92,16 +103,23 @@ namespace ppob
                             string tokenTerbeli = tokenListrik[i];
                             text1.Add("#Token Listrik " + (i+1));
                             text1.Add("- " + tokenTerbeli);  
-                            //for(int j = 0 ; j < panjangArray-1 ; j++){
-                            //    tokenListrik[j] = tokenListrik[j+1];
-                            //}
+                            for(int j = 0 ; j < panjangArray-1 ; j++){
+                                tokenListrik[j] = tokenListrik[j+1];
+                            }
+                            //deleteDB("KodeToken/TokenListrik/TokenListrik1.txt",tokenListrik);
+                            
                         }
+
                         else if (pilihan1 == 2){
                             string[] tokenListrik = System.IO.File.ReadAllLines(@"KodeToken/TokenListrik/TokenListrik2.txt");
                             int panjangArray = tokenListrik.Length;
                             string tokenTerbeli = tokenListrik[i];
                             text1.Add("#Token Listrik " + (i+1));
-                            text1.Add("- " + tokenTerbeli);                         
+                            text1.Add("- " + tokenTerbeli);     
+                            for(int j = 0 ; j < panjangArray-1 ; j++){
+                                tokenListrik[j] = tokenListrik[j+1];
+                            }
+                            //deleteDB("KodeToken/TokenListrik/TokenListrik1.txt",tokenListrik);                    
                         }
                         else if (pilihan1 == 3){
                             string[] tokenListrik = System.IO.File.ReadAllLines(@"KodeToken/TokenListrik/TokenListrik3.txt");
@@ -109,6 +127,11 @@ namespace ppob
                             string tokenTerbeli = tokenListrik[i];
                             text1.Add("#Token Listrik " + (i+1));
                             text1.Add("- " + tokenTerbeli);   
+                            for(int j = 0 ; j < panjangArray-1 ; j++){
+                                tokenListrik[j] = tokenListrik[j+1];
+                            }
+                            //deleteDB("KodeToken/TokenListrik/TokenListrik1.txt",tokenListrik);
+
                         }
 
 
@@ -135,6 +158,19 @@ namespace ppob
                     Console.ReadKey();
                 }
             }
+        }
+
+        public static async Task deleteDB(string alamat,string[] db)
+        {
+            await File.WriteAllLinesAsync(alamat, db);  
+        }
+
+        public void setDefault(){
+            this.harga = 0;
+            this.jumlahBeli = 0;
+            this.uang = 0;
+            this.totalHarga = 0;
+            this.kembalian = 0;
         }
     }
 }

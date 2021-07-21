@@ -1,23 +1,32 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
 
 namespace ppob
 {
     class Pulsa
     {
         private int pilih;
-        private int pulsa = 0;
+        private int pulsa;
         private int admin = 2000;
         private int total;
         private int tunai;
         private int kembalian;
         private string noTelp;
         private string verif;
+
+        public Pulsa(int pulsa, int total, int kembalian,int tunai, string noTelp){
+            this.pulsa = pulsa;
+            this.total = total;
+            this.kembalian = kembalian;
+            this.tunai = tunai;
+            this.noTelp = noTelp;
+        }
+
         // method untuk menu pulsa
         public void MenuPulsa()
         {
+            Console.Clear();
+            setDefault();
             Console.WriteLine("=============");
             Console.WriteLine("=== PULSA ===");
             Console.WriteLine("=============");
@@ -51,7 +60,6 @@ namespace ppob
             return waktu.ToString();
         }
 
-        // method untuk mencetak struk ke file txt
 
 
         // method untuk membayar
@@ -124,10 +132,13 @@ namespace ppob
             Console.WriteLine("Transaksi berhasil");
             Console.WriteLine($"Pulsa telah ditambahkan sebesar Rp{pulsa} ke nomor {noTelp}");
             Console.WriteLine("=========================================================\n");
-            Console.WriteLine("ketik ok untuk mencetak nota\n");
+            Console.Write("ketik ok untuk mencetak nota\n : ");
             verif = Console.ReadLine();
             if (verif == "ok" || verif == "OK" || verif == "oK" || verif == "Ok"){
                 CetakStruk();
+            } else {
+                Console.WriteLine("\nTidak jadi mencetak, Halaman akan dialihkan pada halaman utama");
+                Console.ReadKey();
             }
             
         }
@@ -150,11 +161,11 @@ namespace ppob
                     text2.Add("==============================");
                     text2.Add("NO HANDPHONE   : "+ noTelp);
                     text2.Add("NOMINAL        : Rp"+ pulsa);
-                    text2.Add("BIAYA ADMIN    : "+ admin);
-                    text2.Add("TOTAL          : "+ (total = pulsa + admin));
+                    text2.Add("BIAYA ADMIN    : Rp"+ admin);
+                    text2.Add("TOTAL          : Rp"+ (total = pulsa + admin));
                     text2.Add("\n       - DETAIL BAYAR -       \n");
-                    text2.Add("TUNAI          : "+ tunai);    
-                    text2.Add("KEMBALIAN      : "+ kembalian);    
+                    text2.Add("TUNAI          : Rp"+ tunai);    
+                    text2.Add("KEMBALIAN      : Rp"+ kembalian);    
                     text2.Add("==============================");                            
                     tukangprint.WriteToFile(text2);
                     tukangprint.ReadtoFile(text2);
@@ -162,7 +173,15 @@ namespace ppob
 
                     Console.WriteLine("Data berhasil dicetak!!! Tekan ENTER untuk langsung kembali ke menu utama");
                     Console.ReadKey();
-
         }
+
+        private void setDefault(){
+            this.pulsa = 0;
+            this.total = 0;
+            this.kembalian = 0;
+            this.tunai = 0;
+            this.noTelp = "";
+        }
+
     }
 }

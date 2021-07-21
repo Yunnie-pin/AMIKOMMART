@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace ppob
 {
@@ -6,6 +7,8 @@ namespace ppob
     {
         static void Main(string[] args)
         {
+            while (true)
+            {
                 Console.WriteLine( "|=========================================================================================================================|" );
                 Console.WriteLine( " " );
                 //Menampilkan home page yang berisi list menu yang terdapat pada program cinekom 
@@ -40,33 +43,39 @@ namespace ppob
                 Console.WriteLine( "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" );
                 Console.WriteLine("\n\n"); 
                 Console.WriteLine("Pilih menu untuk melanjutkan pembelian"); 
-                Console.Write("Ketik (1-5) = ");
-                int choice = Convert.ToInt32(Console.ReadLine());
+                int choice;
+                do{
+                Console.Write("Ketik (1-4) = ");
+                choice = Convert.ToInt32(Console.ReadLine());
+                }while(choice > 4 || choice < 1);
                 switch (choice)
                 {
                     //Menu Pulsa
                     case 1:
-                        Pulsa pulsa = new Pulsa();
+                        Pulsa pulsa = new Pulsa(0,0,0,0,"");
                         pulsa.MenuPulsa();
                         break;
                     //Menu Paket Data
                     case 2:
-                        Data data = new Data();
+                        Data data = new Data(0,0,0,"",0);
                         data.buydata();
                         break;
 
                     //Menu Listrik
                     case 3:
 
-                        Listrik listrik = new Listrik();
+                        Listrik listrik = new Listrik(0,0,0,0,0);
                         listrik.beliPulsaListrik();
                         break;
+
+                    //Menu Keluar
                     case 4:
 
                         break;
 
                                         
                 }
+            }
             }
         
         }
