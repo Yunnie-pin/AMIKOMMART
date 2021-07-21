@@ -51,7 +51,8 @@ namespace ppob
                         break;
                     //Menu Paket Data
                     case 2:
-                        
+                        Data data = new Data();
+                        data.buydata();
                         break;
 
                     //Menu Listrik

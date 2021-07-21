@@ -14,8 +14,7 @@ namespace ppob
         private int tunai;
         private int kembalian;
         private string noTelp;
-        private bool kunci = false;
-
+        private string verif;
         // method untuk menu pulsa
         public void MenuPulsa()
         {
@@ -27,12 +26,7 @@ namespace ppob
             Console.WriteLine();
             NoTelp();
 
-            // akan terjadi perulangan apabila menu yang dipilih tidak termasuk dalam daftar menu
-            do
-            {
-                kunci = false;
-                IsiPulsa();
-            } while (kunci == true);
+            IsiPulsa();
 
             // memanggil method Bayar() untuk memasukkan pulsa uang
             Bayar();
@@ -40,7 +34,6 @@ namespace ppob
             {
                 kembalian = tunai - (pulsa + admin); // perhitungan kembalian
                 TransaksiBerhasil();
-                CetakStruk();
             }
             else
             {
@@ -59,60 +52,13 @@ namespace ppob
         }
 
         // method untuk mencetak struk ke file txt
-        public void CetakStruk()
-        {
-            try
-            {
-                StreamWriter cetak = new StreamWriter("C:\\StrukPembayaran.txt");
-                /////////////////123456789012345678901234567890
-                cetak.WriteLine("       STRUK  PEMBELIAN       ");
-                cetak.WriteLine("     ", Waktu(), "     ");
-                cetak.WriteLine("     : PEMBAYARAN PULSA :     ");
-                cetak.WriteLine("==============================");
-                cetak.WriteLine("NO HANDPHONE   : ", noTelp);
-                cetak.Write("NOMINAL        : ");
-                switch (pilih)
-                {
-                    case 1:
-                        cetak.WriteLine("Rp", pulsa);
-                        break;
-                    case 2:
-                        cetak.WriteLine("Rp", pulsa);
-                        break;
-                    case 3:
-                        cetak.WriteLine("Rp", pulsa);
-                        break;
-                    case 4:
-                        cetak.WriteLine("Rp", pulsa);
-                        break;
-                    case 5:
-                        cetak.WriteLine("Rp", pulsa);
-                        break;
-                }
-                cetak.WriteLine("BIAYA ADMIN    : ", admin);
-                cetak.WriteLine("TOTAL          : ", (total = pulsa + admin));
-                cetak.WriteLine();
-                cetak.WriteLine("       - DETAIL BAYAR -       ");
-                cetak.WriteLine();
-                cetak.WriteLine("TUNAI          : ", tunai);
-                cetak.WriteLine("KEMBALIAN      : ", kembalian);
-                cetak.WriteLine("==============================");
-            }
-            catch (Exception error)
-            {
-                Console.WriteLine(error.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Transaksi Sukses!");
-            }
-        }
+
 
         // method untuk membayar
         public void Bayar()
         {
             Console.Write("Masukkan uang : ");
-            tunai = Console.Read();
+            tunai = Convert.ToInt32(Console.ReadLine());
         }
 
         // method untuk input nomor telepon/handphone
@@ -134,8 +80,14 @@ namespace ppob
             Console.WriteLine("4 | Rp50000  | Rp52000");
             Console.WriteLine("5 | Rp100000 | Rp102000");
             Console.WriteLine("*Sudah termasuk biaya admin");
-            Console.Write("Pilih : ");
-            pilih = Console.Read();
+
+            // akan terjadi perulangan apabila menu yang dipilih tidak termasuk dalam daftar menu
+            do
+            {
+                Console.Write("Pilih : ");
+                pilih = Convert.ToInt32(Console.ReadLine());
+
+            } while (pilih > 5 || pilih <= 0);
 
             switch (pilih)
             {
@@ -163,12 +115,6 @@ namespace ppob
                     // memberi nilai ke variabel pulsa
                     pulsa = 100000;
                     break;
-
-                default:
-                    Console.WriteLine("Menu yang Anda pilih tidak ditemukan");
-                    Console.WriteLine("Silahkan coba lagi");
-                    kunci = true; // memberikan nilai true ke variabel kunci sebagai syarat untuk melakukan perulangan do_while
-                    break;
             }
         }
 
@@ -177,14 +123,46 @@ namespace ppob
         {
             Console.WriteLine("Transaksi berhasil");
             Console.WriteLine($"Pulsa telah ditambahkan sebesar Rp{pulsa} ke nomor {noTelp}");
-            Console.WriteLine("=========================================================");
-            Console.WriteLine();
+            Console.WriteLine("=========================================================\n");
+            Console.WriteLine("ketik ok untuk mencetak nota\n");
+            verif = Console.ReadLine();
+            if (verif == "ok" || verif == "OK" || verif == "oK" || verif == "Ok"){
+                CetakStruk();
+            }
+            
         }
 
         // method untuk menampilkan pesan transaksi gagal
         private void TransaksiGagal()
         {
             Console.WriteLine("Transaksi gagal karena uang tidak mencukupi");
+            if (!(tunai >= pulsa + admin)){
+                Console.WriteLine("karena uang tidak mencukupi");
+            }
+        }
+        
+        private void CetakStruk()
+        {
+                    PrintNota tukangprint = PrintNota.Instance;
+                    var text2 = new List<string>();
+                    text2.Add("\n       STRUK  PEMBELIAN       ");
+                    text2.Add("     : PEMBAYARAN PULSA :     ");
+                    text2.Add("==============================");
+                    text2.Add("NO HANDPHONE   : "+ noTelp);
+                    text2.Add("NOMINAL        : Rp"+ pulsa);
+                    text2.Add("BIAYA ADMIN    : "+ admin);
+                    text2.Add("TOTAL          : "+ (total = pulsa + admin));
+                    text2.Add("\n       - DETAIL BAYAR -       \n");
+                    text2.Add("TUNAI          : "+ tunai);    
+                    text2.Add("KEMBALIAN      : "+ kembalian);    
+                    text2.Add("==============================");                            
+                    tukangprint.WriteToFile(text2);
+                    tukangprint.ReadtoFile(text2);
+                    text2.ForEach(i => Console.WriteLine(i));
+
+                    Console.WriteLine("Data berhasil dicetak!!! Tekan ENTER untuk langsung kembali ke menu utama");
+                    Console.ReadKey();
+
         }
     }
 }

@@ -1,14 +1,13 @@
 
----------------------------------------
-[BARANG]			[JUMLAH]
----------------------------------------
-TOKEN LISTRIK 23000an		x2
-#Token Listrik 1
-- 003-0003-0000-111-001
-#Token Listrik 2
-- 003-0003-0000-111-023
----------------------------------------
-Total Pembelian		: Rp.46000
-Uang dibayarkan		: Rp.10000000
----------------------------------------
-Kembalian		: Rp.9954000
+       STRUK  PEMBELIAN       
+     : PEMBAYARAN PULSA :     
+==============================
+NO HANDPHONE   : 081915223777
+NOMINAL        : Rp45000
+Data Sebesar 5Gb
+
+       - DETAIL BAYAR -       
+
+TUNAI          : 50000
+KEMBALIAN      : 5000
+==============================
