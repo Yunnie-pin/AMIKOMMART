@@ -101,6 +101,13 @@ namespace ppob
                             string[] tokenListrik = System.IO.File.ReadAllLines(@"KodeToken/TokenListrik/TokenListrik1.txt");
                             int panjangArray = tokenListrik.Length;
                             string tokenTerbeli = tokenListrik[i];
+
+                            if(string.IsNullOrEmpty(tokenTerbeli)){
+                                Console.WriteLine("Maaf Database Kosong/Tidak mencukupi untuk jumlah transaksi");
+                                Console.ReadKey();
+                                break;
+                            }
+
                             text1.Add("#Token Listrik " + (i+1));
                             text1.Add("- " + tokenTerbeli);  
                             for(int j = 0 ; j < panjangArray-1 ; j++){
@@ -114,6 +121,13 @@ namespace ppob
                             string[] tokenListrik = System.IO.File.ReadAllLines(@"KodeToken/TokenListrik/TokenListrik2.txt");
                             int panjangArray = tokenListrik.Length;
                             string tokenTerbeli = tokenListrik[i];
+
+                            if(string.IsNullOrEmpty(tokenTerbeli)){
+                                Console.WriteLine("Maaf Database Kosong/Tidak mencukupi untuk jumlah transaksi");
+                                Console.ReadKey();
+                                break;
+                            }
+
                             text1.Add("#Token Listrik " + (i+1));
                             text1.Add("- " + tokenTerbeli);     
                             for(int j = 0 ; j < panjangArray-1 ; j++){
@@ -125,6 +139,13 @@ namespace ppob
                             string[] tokenListrik = System.IO.File.ReadAllLines(@"KodeToken/TokenListrik/TokenListrik3.txt");
                             int panjangArray = tokenListrik.Length;
                             string tokenTerbeli = tokenListrik[i];
+
+                            if(string.IsNullOrEmpty(tokenTerbeli)){
+                                Console.WriteLine("Maaf Database Kosong/Tidak mencukupi untuk jumlah transaksi");
+                                Console.ReadKey();
+                                break;
+                            }
+
                             text1.Add("#Token Listrik " + (i+1));
                             text1.Add("- " + tokenTerbeli);   
                             for(int j = 0 ; j < panjangArray-1 ; j++){
